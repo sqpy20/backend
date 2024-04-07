@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {% block title %} Admin {% endblock %}{% block body %}
+
+<h1 style="text-align: center;">User Data</h1>
+<form
+  method="post"
+  action="/delete_all"
+  style="display: flex; justify-content: center; align-items: center;"
+>
+  <input
+    type="submit"
+    value="Delete All"
+    style="background-color: red; font-weight: 600; color: aliceblue;"
+  />
+</form>
+{% for user in users %}
+<div>
+  <strong>ID:</strong> {{ user[0] }}<br />
+  <strong>Username:</strong> {{ user[1] }}<br />
+  <strong>Password:</strong> {{ user[2] }}<br />
+  <strong>IP Address:</strong> {{ user[3] }}<br />
+  <strong>Account type:</strong> {{ user[4] }}<br />
+  <strong>City:</strong> {{ user[5] }}<br />
+  <strong>Region:</strong> {{ user[6] }}<br />
+  <strong>Country:</strong> {{ user[7] }}<br />
+  <strong>Time:</strong> {{ user[8] }} UTC<br />
+  <form method="post" action="/delete/{{ user[0] }}">
+    <input
+      type="submit"
+      value="Delete"
+      style="background-color: red; font-weight: 600; color: aliceblue;"
+    />
+  </form>
+</div>
+<br />
+{% endfor %} {% endblock %}
